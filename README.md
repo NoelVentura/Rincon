@@ -1,46 +1,54 @@
-# Astro Starter Kit: Basics
+# El Rincón del Antojo
 
-```sh
-npm create astro@latest -- --template basics
+Sitio web para El Rincón del Antojo - Gastrotienda especializada en productos gourmet, quesos, carnes frías, embutidos y vinos.
+
+## 📋 Descripción
+
+Página web para una gastrotienda que ofrece:
+- Del Antojo al Gourmet (Charolas gourmet con carnes, quesos y embutidos)
+- Vinos de diversas regiones del mundo
+- Productos gourmet nacionales e importados
+- Servicio de pedidos personalizados
+
+## 🚀 Páginas
+
+- **charolas.html** - Página principal con catálogo de productos
+- **pedido.html** - Formulario para realizar pedidos
+- **contacto.html** - Información de contacto y formulario
+- **nosotros.html** - Información sobre la empresa
+
+## 🛠️ Tecnologías
+
+- HTML5
+- CSS3
+- JavaScript
+- Google Apps Script (para integración con Google Sheets)
+
+## 📦 Instalación
+
+1. Clona el repositorio:
+```bash
+git clone https://github.com/tu-usuario/El-Rincon-de-las-Tablas.git
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+2. Abre los archivos HTML en tu navegador o usa un servidor local.
 
-## 🚀 Project Structure
+## 🌐 GitHub Pages
 
-Inside of your Astro project, you'll see the following folders and files:
+Para publicar el sitio en GitHub Pages:
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+1. Ve a la configuración del repositorio en GitHub
+2. Navega a "Pages" en el menú lateral
+3. Selecciona la rama `main` y la carpeta `/root`
+4. Guarda los cambios
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+El sitio estará disponible en: `https://tu-usuario.github.io/El-Rincon-de-las-Tablas/`
 
-## 🧞 Commands
+## 📝 Notas
 
-All commands are run from the root of the project, from a terminal:
+- Asegúrate de configurar la URL de Google Apps Script en `pedido.html` para que funcione el envío de pedidos.
+- Las imágenes deben estar en la carpeta `images/` para que se muestren correctamente.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 📄 Licencia
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Todos los derechos reservados © 2025 El Rincón del Antojo

@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Arma tu Tabla - Personaliza tu tabla gourmet con los ingredientes que prefieras">
+	<title>Arma tu Tabla - El Rincón del Antojo</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			margin: 0;
+			width: 100%;
+			min-height: 100vh;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			color: #333;
+			line-height: 1.6;
+		}
+
+		header {
+			background: rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(10px);
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		.navbar {
+			padding: 1rem 2rem;
+		}
+
+		.nav-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.logo {
+			font-size: 1.5rem;
+			font-weight: bold;
+			color: #8B4513;
+		}
+
+		.logo a {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			text-decoration: none;
+			color: inherit;
+			transition: opacity 0.3s;
+		}
+
+		.logo a:hover {
+			opacity: 0.8;
+		}
+
+		.logo span {
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+			margin-right: 1rem;
+		}
+
+		.logo-icon {
+			height: 70px;
+			width: auto;
+			object-fit: contain;
+		}
+
+		.nahomi-image {
+			height: 70px;
+			width: auto;
+			object-fit: contain;
+		}
+
+		.nav-menu {
+			display: flex;
+			list-style: none;
+			gap: 2rem;
+			align-items: center;
+		}
+
+		.nav-menu a {
+			text-decoration: none;
+			color: #333;
+			font-weight: 500;
+			transition: color 0.3s;
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+		}
+
+		.nav-menu a:hover {
+			color: #8B4513;
+		}
+
+		.dropdown {
+			position: relative;
+		}
+
+		.dropdown-menu {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			background: #fff;
+			list-style: none;
+			padding: 0.5rem 0;
+			min-width: 200px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(-10px);
+			transition: all 0.3s;
+		}
+
+		.dropdown:hover .dropdown-menu {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+
+		.dropdown-menu li {
+			padding: 0.5rem 1rem;
+		}
+
+		.dropdown-menu a {
+			display: block;
+		}
+
+		.hamburger {
+			display: none;
+			flex-direction: column;
+			cursor: pointer;
+			gap: 4px;
+		}
+
+		.hamburger span {
+			width: 25px;
+			height: 3px;
+			background: #333;
+			transition: all 0.3s;
+		}
+
+		main {
+			min-height: calc(100vh - 200px);
+			background: url('images/tablapequeña.jpg') center center/cover no-repeat;
+			padding: 3rem 2rem;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.page-title {
+			text-align: center;
+			font-size: 3rem;
+			color: white;
+			margin-bottom: 2rem;
+			font-weight: 700;
+			-webkit-text-stroke: 2px black;
+			-webkit-text-fill-color: white;
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+		}
+
+		.page-subtitle {
+			text-align: center;
+			font-size: 1.2rem;
+			color: white;
+			margin-bottom: 3rem;
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+		}
+
+		.ingredients-section {
+			background: rgba(255, 255, 255, 0.3);
+			border-radius: 15px;
+			padding: 2.5rem;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+			margin-bottom: 2rem;
+		}
+
+		.section-title {
+			font-size: 2rem;
+			color: #000;
+			margin-bottom: 1.5rem;
+			text-align: center;
+		}
+
+		.ingredients-list {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: 1.5rem;
+			margin-bottom: 2rem;
+		}
+
+		.ingredient-item {
+			display: flex;
+			align-items: center;
+			padding: 1rem;
+			background: #f9f9f9;
+			border-radius: 10px;
+			transition: all 0.3s;
+			cursor: pointer;
+			border: 2px solid transparent;
+		}
+
+		.ingredient-item:hover {
+			background: #f0f0f0;
+			border-color: #8B4513;
+			transform: translateY(-2px);
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		.ingredient-item input[type="checkbox"] {
+			width: 24px;
+			height: 24px;
+			margin-right: 1rem;
+			cursor: pointer;
+			accent-color: #8B4513;
+		}
+
+		.ingredient-item label {
+			font-size: 1.1rem;
+			color: #333;
+			cursor: pointer;
+			flex: 1;
+			font-weight: 500;
+		}
+
+		.mermeladas-group {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			padding: 1rem;
+			background: #f9f9f9;
+			border-radius: 10px;
+			margin-top: 0.5rem;
+		}
+
+		.mermeladas-group .ingredient-item {
+			margin: 0;
+			padding: 0.75rem;
+		}
+
+		.people-section {
+			background: rgba(255, 255, 255, 0.5);
+			border-radius: 15px;
+			padding: 2.5rem;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+			margin-top: 2rem;
+		}
+
+		.people-selector {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1.5rem;
+		}
+
+		.people-selector label {
+			font-size: 1.3rem;
+			color: #8B4513;
+			font-weight: 600;
+		}
+
+		.people-options {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+			justify-content: center;
+		}
+
+		.people-option {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.people-option input[type="radio"] {
+			width: 20px;
+			height: 20px;
+			cursor: pointer;
+			accent-color: #8B4513;
+		}
+
+		.people-option label {
+			font-size: 1.1rem;
+			color: #333;
+			cursor: pointer;
+			font-weight: 500;
+		}
+
+		.submit-button {
+			background: #3cb752;
+			color: white;
+			padding: 1rem 3rem;
+			border: none;
+			border-radius: 10px;
+			font-size: 1.2rem;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.3s;
+			margin-top: 2rem;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.submit-button:hover {
+			background: #2ea043;
+			transform: scale(1.05);
+			box-shadow: 0 4px 15px rgba(60, 183, 82, 0.3);
+		}
+
+		footer {
+			background: url('images/nosotros.jpg') center center/cover no-repeat;
+			color: #fff;
+			padding: 3rem 2rem 1rem;
+			margin-top: 4rem;
+			position: relative;
+		}
+
+		footer::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.6);
+			z-index: 1;
+		}
+
+		.footer-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 2rem;
+			position: relative;
+			z-index: 2;
+		}
+
+		.footer-section h3 {
+			margin-bottom: 1rem;
+			color: #d4af37;
+		}
+
+		.footer-section p {
+			margin-bottom: 0.5rem;
+		}
+
+		.footer-section a {
+			color: #fff;
+			text-decoration: none;
+		}
+
+		.footer-section a:hover {
+			color: #d4af37;
+		}
+
+		.footer-bottom {
+			text-align: center;
+			padding-top: 2rem;
+			margin-top: 2rem;
+			border-top: 1px solid #444;
+			position: relative;
+			z-index: 2;
+		}
+
+		@media (max-width: 768px) {
+			.page-title {
+				font-size: 2rem;
+			}
+
+			.ingredients-list {
+				grid-template-columns: 1fr;
+			}
+
+			.people-options {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+			.nav-menu {
+				position: fixed;
+				left: -100%;
+				top: 70px;
+				flex-direction: column;
+				background-color: white;
+				width: 100%;
+				text-align: center;
+				transition: 0.3s;
+				box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+				padding: 2rem 0;
+			}
+
+			.nav-menu.active {
+				left: 0;
+			}
+
+			.hamburger {
+				display: flex;
+			}
+
+			.hamburger.active span:nth-child(2) {
+				opacity: 0;
+			}
+
+			.hamburger.active span:nth-child(1) {
+				transform: translateY(8px) rotate(45deg);
+			}
+
+			.hamburger.active span:nth-child(3) {
+				transform: translateY(-8px) rotate(-45deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="navbar">
+			<div class="nav-container">
+				<div class="logo">
+					<a href="file:///C:/Users/Noel%20Pacheco/Desktop/Proyectos%20Cursor/Proyectos/El-Rincon-de-las-Tablas/charolas.html" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit;">
+						<img src="images/icono.png" alt="Logo" class="logo-icon">
+						<span>El Rincón del Antojo</span>
+						<img src="images/nahomi.png" alt="Nahomi" class="nahomi-image">
+					</a>
+				</div>
+				<ul class="nav-menu">
+					<li><a href="file:///C:/Users/Noel%20Pacheco/Desktop/Proyectos%20Cursor/Proyectos/El-Rincon-de-las-Tablas/charolas.html">Inicio</a></li>
+					<li class="dropdown">
+						<a href="#">Menú ▾</a>
+						<ul class="dropdown-menu">
+							<li class="dropdown-submenu">
+								<a href="charolas.html#charolas">Charolas Gourmet ▸</a>
+								<ul class="submenu">
+									<li><a href="charolas.html#charolas">Mixtas de Carnes y Quesos</a></li>
+									<li><a href="charolas.html#quesos">Especial de Quesos</a></li>
+									<li><a href="charolas.html#carnes">Especial de Carnes y Embutidos</a></li>
+								</ul>
+							</li>
+							<li><a href="#tapas">Tapas Españolas</a></li>
+							<li class="dropdown-submenu">
+								<a href="#baguettes">Baguettes Gourmet ▸</a>
+								<ul class="submenu">
+									<li><a href="#baguettes-carnes">Baguettes Carnes Frias</a></li>
+									<li><a href="#baguettes-jamon">Baguettes Jamon Serrano</a></li>
+									<li><a href="#baguettes-vegetarianos">Baguettes Vegetarianos</a></li>
+								</ul>
+							</li>
+							<li><a href="#winebar">Wine Bar</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#">Tienda Gourmet ▾</a>
+						<ul class="dropdown-menu">
+							<li><a href="#vinos">Vinos y Accesorios</a></li>
+							<li><a href="#cafeteras">Cafeteras y Prensas</a></li>
+							<li><a href="#yerba">Yerba Mate</a></li>
+							<li><a href="#tes">Tés y Teteras</a></li>
+						</ul>
+					</li>
+					<li><a href="nosotros.html">Nosotros</a></li>
+					<li><a href="contacto.html">Contacto</a></li>
+				</ul>
+				<div class="hamburger">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<div class="container">
+			<h1 class="page-title">Arma tu Antojo</h1>
+			<p class="page-subtitle">Selecciona los ingredientes que deseas incluir en tu tabla personalizada</p>
+
+			<div class="ingredients-section">
+				<h2 class="section-title">Ingredientes Disponibles</h2>
+				<div class="ingredients-list">
+					<div class="ingredient-item">
+						<input type="checkbox" id="quesos-carnes" name="ingredient" value="quesos-carnes">
+						<label for="quesos-carnes">Quesos y Carnes</label>
+					</div>
+
+					<div class="ingredient-item">
+						<input type="checkbox" id="mermeladas" name="ingredient" value="mermeladas">
+						<label for="mermeladas">Mermeladas</label>
+					</div>
+					<div class="mermeladas-group">
+						<div class="ingredient-item">
+							<input type="checkbox" id="mermelada-fresa" name="ingredient" value="mermelada-fresa">
+							<label for="mermelada-fresa">Mermelada de Fresa</label>
+						</div>
+						<div class="ingredient-item">
+							<input type="checkbox" id="mermelada-chabacano" name="ingredient" value="mermelada-chabacano">
+							<label for="mermelada-chabacano">Mermelada de Chabacano</label>
+						</div>
+						<div class="ingredient-item">
+							<input type="checkbox" id="mermelada-frutos-rojos" name="ingredient" value="mermelada-frutos-rojos">
+							<label for="mermelada-frutos-rojos">Mermelada de Frutos Rojos</label>
+						</div>
+					</div>
+
+					<div class="ingredient-item">
+						<input type="checkbox" id="aceitunas" name="ingredient" value="aceitunas">
+						<label for="aceitunas">Aceitunas Verde y Negra</label>
+					</div>
+
+					<div class="ingredient-item">
+						<input type="checkbox" id="chocolate" name="ingredient" value="chocolate">
+						<label for="chocolate">Chocolate Amargo</label>
+					</div>
+
+					<div class="ingredient-item">
+						<input type="checkbox" id="pistaches" name="ingredient" value="pistaches">
+						<label for="pistaches">Pistaches</label>
+					</div>
+
+					<div class="ingredient-item">
+						<input type="checkbox" id="uvas" name="ingredient" value="uvas">
+						<label for="uvas">Uvas</label>
+					</div>
+
+					<div class="ingredient-item">
+						<input type="checkbox" id="galletas-breton" name="ingredient" value="galletas-breton">
+						<label for="galletas-breton">Galletas Breton</label>
+					</div>
+
+					<div class="ingredient-item">
+						<input type="checkbox" id="pan" name="ingredient" value="pan">
+						<label for="pan">Porción de Pan</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="people-section">
+				<div class="people-selector">
+					<label for="people">Selecciona la cantidad de personas para el tamaño de la tabla:</label>
+					<div class="people-options">
+						<div class="people-option">
+							<input type="radio" id="personas-1" name="personas" value="1">
+							<label for="personas-1">1 Persona</label>
+						</div>
+						<div class="people-option">
+							<input type="radio" id="personas-3" name="personas" value="3">
+							<label for="personas-3">3 Personas</label>
+						</div>
+						<div class="people-option">
+							<input type="radio" id="personas-5-6" name="personas" value="5-6">
+							<label for="personas-5-6">5-6 Personas</label>
+						</div>
+						<div class="people-option">
+							<input type="radio" id="personas-8-10" name="personas" value="8-10">
+							<label for="personas-8-10">8-10 Personas</label>
+						</div>
+						<div class="people-option">
+							<input type="radio" id="personas-12-15" name="personas" value="12-15">
+							<label for="personas-12-15">12-15 Personas</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<button class="submit-button" onclick="procesarPedido()">Confirmar Pedido</button>
+		</div>
+	</main>
+
+	<footer id="contacto">
+		<div class="footer-container">
+			<div class="footer-section">
+				<h3>📍 Ubicación</h3>
+				<p>Avenida Xalisco, Col. Valle de Matatipac, Tepic, Nayarit, Mexico</p>
+				<p>C.P. 63190</p>
+			</div>
+			<div class="footer-section">
+				<h3>📞 Contáctanos</h3>
+				<p><a href="tel:33113263713">33113263713</a></p>
+				<p><a href="mailto:noemiaraeli553@gmail.com">noemiaraeli553@gmail.com</a></p>
+			</div>
+			<div class="footer-section">
+				<h3>🕐 Horarios</h3>
+				<p>Lunes a Viernes: 10 a.m. - 8 p.m.</p>
+				<p>Sábado: 10 a.m. - 3 p.m.</p>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<p><a href="file:///C:/Users/Noel%20Pacheco/Desktop/Proyectos%20Cursor/Proyectos/El-Rincon-de-las-Tablas/charolas.html" style="color: #fff; text-decoration: none; margin-right: 1rem;">Inicio</a>&copy; 2025 El Rincón del Antojo. Todos los derechos reservados.</p>
+		</div>
+	</footer>
+
+	<script>
+		// Menú móvil hamburguesa
+		const hamburger = document.querySelector('.hamburger');
+		const navMenu = document.querySelector('.nav-menu');
+
+		if (hamburger && navMenu) {
+			hamburger.addEventListener('click', () => {
+				navMenu.classList.toggle('active');
+				hamburger.classList.toggle('active');
+			});
+
+			// Cerrar menú al hacer clic en un enlace
+			document.querySelectorAll('.nav-menu a').forEach(link => {
+				link.addEventListener('click', () => {
+					navMenu.classList.remove('active');
+					hamburger.classList.remove('active');
+				});
+			});
+		}
+
+		// Función para procesar el pedido
+		function procesarPedido() {
+			const ingredientes = [];
+			const checkboxes = document.querySelectorAll('input[name="ingredient"]:checked');
+			
+			checkboxes.forEach(checkbox => {
+				ingredientes.push(checkbox.value);
+			});
+
+			const personas = document.querySelector('input[name="personas"]:checked');
+
+			if (ingredientes.length === 0) {
+				alert('Por favor selecciona al menos un ingrediente.');
+				return;
+			}
+
+			if (!personas) {
+				alert('Por favor selecciona la cantidad de personas.');
+				return;
+			}
+
+			// Guardar en localStorage para usar en pedido.html
+			const pedidoPersonalizado = {
+				tipo: 'Tabla Personalizada',
+				ingredientes: ingredientes,
+				personas: personas.value,
+				fecha: new Date().toISOString()
+			};
+
+			localStorage.setItem('pedidoPersonalizado', JSON.stringify(pedidoPersonalizado));
+			
+			// Redirigir a la página de pedido
+			window.location.href = 'pedido.html';
+		}
+
+		// Toggle para mostrar/ocultar mermeladas individuales
+		document.getElementById('mermeladas').addEventListener('change', function() {
+			const mermeladasGroup = document.querySelector('.mermeladas-group');
+			if (this.checked) {
+				mermeladasGroup.style.display = 'flex';
+			} else {
+				mermeladasGroup.style.display = 'none';
+				// Desmarcar las mermeladas individuales
+				document.querySelectorAll('.mermeladas-group input[type="checkbox"]').forEach(cb => {
+					cb.checked = false;
+				});
+			}
+		});
+
+		// Inicialmente ocultar el grupo de mermeladas
+		document.querySelector('.mermeladas-group').style.display = 'none';
+	</script>
+</body>
+</html>
+
+
+
+
