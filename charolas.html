@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Del Antojo al Gourmet - Quesos, Embutidos y Carnes de alta calidad">
+	<title>El Rincón del Antojo - Del Antojo al Gourmet</title>
+	<style>
+		/* Fuentes personalizadas - Agrega tus @font-face aquí */
+		/*
+		@font-face {
+			font-family: 'MiFuentePersonalizada';
+			src: url('fonts/mi-fuente.woff2') format('woff2'),
+				 url('fonts/mi-fuente.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		}
+		*/
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		html,
+		body {
+			margin: 0;
+			width: 100%;
+			min-height: 100vh;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			color: #333;
+			line-height: 1.6;
+		}
+
+		header {
+			background: rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(10px);
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		.navbar {
+			padding: 1rem 2rem;
+		}
+
+		.nav-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.logo {
+			font-size: 1.5rem;
+			font-weight: bold;
+			color: #8B4513;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.logo span {
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+			margin-right: 1rem;
+		}
+
+		.logo-icon {
+			height: 70px;
+			width: auto;
+			object-fit: contain;
+		}
+
+		.nahomi-image {
+			height: 70px;
+			width: auto;
+			object-fit: contain;
+		}
+
+		.nav-menu {
+			display: flex;
+			list-style: none;
+			gap: 2rem;
+			align-items: center;
+		}
+
+		.nav-menu a {
+			text-decoration: none;
+			color: #333;
+			font-weight: 500;
+			transition: color 0.3s;
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+		}
+
+		.nav-menu a:hover {
+			color: #8B4513;
+		}
+
+		.dropdown {
+			position: relative;
+		}
+
+		.dropdown-menu {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			background: #fff;
+			list-style: none;
+			padding: 0.5rem 0;
+			min-width: 200px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(-10px);
+			transition: all 0.3s;
+		}
+
+		.dropdown:hover .dropdown-menu {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+
+		.dropdown-menu li {
+			padding: 0.5rem 1rem;
+		}
+
+		.dropdown-menu a {
+			display: block;
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+		}
+
+		.dropdown-submenu {
+			position: relative;
+		}
+
+		.dropdown-submenu > a {
+			font-size: 0.9rem;
+		}
+
+		.submenu {
+			position: absolute;
+			left: 100%;
+			top: 0;
+			background: #2c2c2c;
+			list-style: none;
+			padding: 0.5rem 0;
+			min-width: 250px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+			opacity: 0;
+			visibility: hidden;
+			transform: translateX(-10px);
+			transition: all 0.3s;
+		}
+
+		.dropdown-submenu:hover .submenu {
+			opacity: 1;
+			visibility: visible;
+			transform: translateX(0);
+		}
+
+		.submenu li {
+			padding: 0.5rem 1rem;
+		}
+
+		.submenu a {
+			display: block;
+			color: #e0e0e0;
+			text-shadow: none;
+		}
+
+		.submenu a:hover {
+			color: #fff;
+			background: rgba(255, 255, 255, 0.1);
+		}
+
+		.cart-button {
+			background: #8B4513;
+			color: white;
+			padding: 0.75rem 1.5rem;
+			border-radius: 8px;
+			text-decoration: none;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-weight: 600;
+			transition: all 0.3s;
+			font-size: 1rem;
+		}
+
+		.cart-button:hover {
+			background: #6B3410;
+			transform: scale(1.05);
+		}
+
+		.cart-icon {
+			font-size: 1.2rem;
+		}
+
+		.cart-header-button {
+			background: #8B4513;
+			color: white;
+			padding: 0.75rem 1rem;
+			border-radius: 8px;
+			text-decoration: none;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.5rem;
+			font-weight: 600;
+			transition: all 0.3s;
+			font-size: 1rem;
+			border: none;
+			cursor: pointer;
+			margin-right: 1rem;
+		}
+
+		.cart-header-button a {
+			text-decoration: none;
+			color: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.cart-header-button:hover {
+			background: #6B3410;
+			transform: scale(1.05);
+		}
+
+		.cart-header-button svg {
+			width: 24px;
+			height: 24px;
+			fill: currentColor;
+		}
+
+		.cart-header-button {
+			position: relative;
+		}
+
+		.cart-count {
+			position: absolute;
+			top: -8px;
+			right: -8px;
+			background: #25D366;
+			color: white;
+			border-radius: 50%;
+			width: 24px;
+			height: 24px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 0.75rem;
+			font-weight: bold;
+			min-width: 24px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+		}
+
+		.cart-count.hidden {
+			display: none;
+		}
+
+		.hamburger {
+			display: none;
+			flex-direction: column;
+			cursor: pointer;
+			gap: 4px;
+		}
+
+		.hamburger span {
+			width: 25px;
+			height: 3px;
+			background: #333;
+			transition: all 0.3s;
+		}
+
+		main {
+			min-height: calc(100vh - 200px);
+		}
+
+		.charolas-page {
+			background: #f8f8f8;
+		}
+
+		.hero {
+			background-image: url('images/fondo.png');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			color: white;
+			padding: 4rem 2rem;
+			text-align: center;
+			position: relative;
+		}
+
+		.hero::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.3); /* Overlay oscuro para mejor legibilidad */
+			z-index: 0;
+		}
+
+		.hero-content {
+			position: relative;
+			z-index: 1;
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		.hero h1 {
+			font-size: 4rem;
+			margin-bottom: 1rem;
+			font-weight: 700;
+		}
+
+		.divider {
+			width: 100px;
+			height: 3px;
+			background: #d4af37;
+			margin: 1.5rem auto;
+		}
+
+		.hero-subtitle {
+			font-size: 1.3rem;
+			margin-bottom: 2rem;
+			opacity: 0.95;
+		}
+
+		.order-info {
+			background: rgba(255, 255, 255, 0.1);
+			padding: 1.5rem;
+			border-radius: 10px;
+			margin-top: 2rem;
+		}
+
+		.order-text {
+			font-size: 1.1rem;
+			font-weight: 600;
+			margin-bottom: 0.5rem;
+		}
+
+		.schedule {
+			font-size: 0.95rem;
+			opacity: 0.9;
+			margin: 0.25rem 0;
+		}
+
+		.product-section {
+			padding: 4rem 2rem;
+		}
+
+		.alt-section {
+			background: white;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.section-title {
+			font-size: 2.5rem;
+			color: #8B4513;
+			text-align: center;
+			margin-bottom: 1rem;
+			font-weight: 700;
+		}
+
+		.section-description {
+			text-align: center;
+			color: #666;
+			font-size: 1.1rem;
+			max-width: 900px;
+			margin: 0 auto 3rem;
+			line-height: 1.8;
+		}
+
+		.products-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 2rem;
+			margin-top: 2rem;
+		}
+
+		.centered-cards-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 2rem;
+			margin: 3rem auto;
+			max-width: 1200px;
+			justify-items: center;
+		}
+
+		.centered-cards-container .product-card {
+			width: 100%;
+			max-width: 100%;
+		}
+
+		.product-card {
+			background: white;
+			border-radius: 15px;
+			overflow: hidden;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 30px rgba(139, 69, 19, 0.4), 0 0 50px rgba(139, 69, 19, 0.2);
+			transition: transform 0.3s, box-shadow 0.3s;
+		}
+
+		.product-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 40px rgba(139, 69, 19, 0.6), 0 0 70px rgba(139, 69, 19, 0.3);
+		}
+
+		.product-image {
+			width: 100%;
+			height: 250px;
+			background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.charola-mixta-image {
+			background-image: url('images/charolamixta1.jpg');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.product-image.charola-mixta-pequeña-image {
+			background-image: url('images/tablapequeña.jpg') !important;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.charola-mixta-grande-image {
+			background-image: url('images/charolamixta2.jpg');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.charola-mixta-mediana-image {
+			background-image: url('images/tablamediana.jpg');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.charola-mixta-grande-tablagrande-image {
+			background-image: url('images/tablagrande.jpg');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.charola-individual-image {
+			background-image: url('images/individual.jpg');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.charola-quesos-image {
+			background-image: url('images/charolaespecialdequesos.jpg');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			transition: opacity 0.3s;
+		}
+
+		a:hover .charola-quesos-image {
+			opacity: 0.9;
+		}
+
+		.product-image a {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+
+		.product-card > a {
+			display: block;
+			width: 100%;
+			height: 250px;
+			position: relative;
+			z-index: 10;
+			text-decoration: none;
+		}
+
+		.charola-carnes-image {
+			background-image: url('images/charolacarnes.jpg');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.placeholder-image {
+			font-size: 5rem;
+			opacity: 0.5;
+		}
+
+		.product-info {
+			padding: 1.5rem;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.centered-cards-container .product-card {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.centered-cards-container .product-info {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.product-info h3 {
+			font-size: 1.5rem;
+			color: #333;
+			margin-bottom: 0.5rem;
+			text-align: center;
+		}
+
+		.personas-count {
+			font-size: 1.2rem;
+			color: #666;
+			text-align: center;
+			margin: 0 auto 1rem auto;
+			font-weight: 500;
+			display: block;
+		}
+
+		.product-actions {
+			display: flex;
+			gap: 0.75rem;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin-bottom: 1rem;
+			align-items: stretch;
+		}
+
+		.product-actions .btn-primary:only-child {
+			max-width: 48%;
+			flex: 1;
+			min-width: 135px;
+			min-height: 48px;
+		}
+
+		.online-button-container {
+			margin-top: 1rem;
+			text-align: center;
+			padding-top: 1rem;
+			border-top: 1px solid #e0e0e0;
+		}
+
+		.btn-primary,
+		.btn-secondary,
+		.btn-online {
+			padding: 0.9rem 1.2rem;
+			border-radius: 10px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: all 0.3s;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			flex: 1;
+			min-width: 135px;
+			max-width: 48%;
+			font-size: 0.95rem;
+			line-height: 1.3;
+			height: auto;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		}
+
+		.btn-primary {
+			background: #25D366;
+			color: white;
+		}
+
+		.btn-primary:hover {
+			background: #20BA5A;
+			transform: translateY(-2px);
+			box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
+		}
+
+		.btn-secondary {
+			background: #8B4513;
+			color: white;
+		}
+
+		.btn-secondary:hover {
+			background: #6B3410;
+			transform: translateY(-2px);
+			box-shadow: 0 4px 8px rgba(139, 69, 19, 0.3);
+		}
+
+		.btn-online {
+			background: #007bff;
+			color: white;
+			padding: 1rem 2rem;
+			font-size: 1.1rem;
+			width: 100%;
+		}
+
+		.btn-online:hover {
+			background: #0056b3;
+			transform: scale(1.05);
+		}
+
+		.whatsapp-float {
+			position: fixed;
+			bottom: 2rem;
+			right: 2rem;
+			z-index: 999;
+		}
+
+		.whatsapp-btn {
+			background: #25D366;
+			color: white;
+			padding: 1rem 1.5rem;
+			border-radius: 50px;
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			text-decoration: none;
+			box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+			transition: all 0.3s;
+			font-weight: 600;
+		}
+
+		.whatsapp-btn:hover {
+			background: #20BA5A;
+			transform: scale(1.05);
+			box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+		}
+
+		.whatsapp-btn svg {
+			width: 24px;
+			height: 24px;
+		}
+
+		.menu-showcase {
+			padding: 4rem 0;
+			background: #f8f8f8;
+		}
+
+		.menu-showcase-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 3rem;
+		}
+
+		.menu-showcase-title {
+			text-align: center;
+			font-size: 2rem;
+			color: #8B4513;
+			margin-bottom: 3rem;
+			font-weight: 700;
+			position: relative;
+			padding-bottom: 1rem;
+		}
+
+		.menu-showcase-title::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 100px;
+			height: 2px;
+			background: #d4af37;
+		}
+
+		.menu-panels {
+			display: flex;
+			gap: 1rem;
+			overflow-x: auto;
+			scroll-behavior: smooth;
+			scroll-snap-type: x mandatory;
+			-webkit-overflow-scrolling: touch;
+			padding: 1rem 0;
+			position: relative;
+		}
+
+		.menu-panels::-webkit-scrollbar {
+			display: none;
+		}
+
+		.menu-panels {
+			-ms-overflow-style: none;
+			scrollbar-width: none;
+		}
+
+		.menu-panel {
+			position: relative;
+			height: 500px;
+			width: calc(25% - 0.75rem);
+			min-width: calc(25% - 0.75rem);
+			max-width: calc(25% - 0.75rem);
+			flex-shrink: 0;
+			overflow: hidden;
+			cursor: pointer;
+			transition: transform 0.3s ease;
+			border-radius: 20px;
+			scroll-snap-align: start;
+		}
+
+		.menu-panel:hover {
+			transform: scale(1.05);
+			z-index: 10;
+		}
+
+		.menu-panel-image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.3s ease;
+		}
+
+		.menu-panel:hover .menu-panel-image {
+			transform: scale(1.1);
+		}
+
+		.menu-panel-overlay {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+			padding: 2rem;
+			color: white;
+		}
+
+		.menu-panel-title {
+			font-size: 1.8rem;
+			font-weight: 700;
+			margin-bottom: 0.5rem;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		}
+
+		.menu-panel-1 {
+			background: url('images/vino1.jpg') center center/cover no-repeat;
+			position: relative;
+		}
+
+		.menu-panel-1::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.4);
+			z-index: 1;
+		}
+
+		.menu-panel-1 .menu-panel-content {
+			position: relative;
+			z-index: 2;
+		}
+
+		.menu-panel-2 {
+			background: url('images/vino2.jpg') center center/cover no-repeat;
+			position: relative;
+		}
+
+		.menu-panel-2::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.4);
+			z-index: 1;
+		}
+
+		.menu-panel-2 .menu-panel-content {
+			position: relative;
+			z-index: 2;
+		}
+
+		.menu-panel-3 {
+			background: url('images/vino3.jpg') center center/cover no-repeat;
+			position: relative;
+		}
+
+		.menu-panel-3::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.4);
+			z-index: 1;
+		}
+
+		.menu-panel-3 .menu-panel-content {
+			position: relative;
+			z-index: 2;
+		}
+
+		.menu-panel-4 {
+			background: url('images/vino4.jpg') center center/cover no-repeat;
+			position: relative;
+		}
+
+		.menu-panel-4::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.4);
+			z-index: 1;
+		}
+
+		.menu-panel-4 .menu-panel-content {
+			position: relative;
+			z-index: 2;
+		}
+
+		.menu-panel-5 {
+			background: url('images/vino5.jpg') center center/cover no-repeat;
+			position: relative;
+		}
+
+		.menu-panel-5::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.4);
+			z-index: 1;
+		}
+
+		.menu-panel-5 .menu-panel-content {
+			position: relative;
+			z-index: 2;
+		}
+
+		.menu-panel-6 {
+			background: url('images/vino6.jpg') center center/cover no-repeat;
+			position: relative;
+		}
+
+		.menu-panel-6::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.4);
+			z-index: 1;
+		}
+
+		.menu-panel-6 .menu-panel-content {
+			position: relative;
+			z-index: 2;
+		}
+
+		.menu-panel-content {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			height: 100%;
+			color: white;
+			text-align: center;
+			padding: 2rem;
+		}
+
+		.menu-panel-top-content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-end;
+			flex: 1;
+			margin-bottom: 1rem;
+		}
+
+		.menu-panel-icon {
+			font-size: 4rem;
+			margin-bottom: 1rem;
+		}
+
+		.menu-panel-text {
+			font-size: 0.9rem;
+			font-weight: 600;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+			line-height: 1.3;
+		}
+
+		.menu-panel-price-btn {
+			background: #8B4513;
+			color: white;
+			padding: 0.8rem 1.5rem;
+			border-radius: 10px;
+			font-size: 0.95rem;
+			font-weight: 700;
+			border: none;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			text-shadow: none;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+			width: 100%;
+			max-width: 200px;
+			margin-top: auto;
+		}
+
+		.menu-panel-price-btn:hover {
+			background: #6B3410;
+			transform: translateY(-2px);
+			box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+		}
+
+		.carousel-container {
+			position: relative;
+			width: 100%;
+		}
+
+		.carousel-btn {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background: rgba(139, 69, 19, 0.8);
+			color: white;
+			border: none;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			cursor: pointer;
+			font-size: 1.5rem;
+			z-index: 100;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: all 0.3s ease;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+		}
+
+		.carousel-btn:hover {
+			background: rgba(139, 69, 19, 1);
+			transform: translateY(-50%) scale(1.1);
+		}
+
+		.carousel-btn.prev {
+			left: 10px;
+		}
+
+		.carousel-btn.next {
+			right: 10px;
+		}
+
+		.carousel-btn:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+
+		footer {
+			background: #2c2c2c url('images/bajo.png');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			color: #fff;
+			padding: 3rem 2rem 1rem;
+			margin-top: 0;
+			position: relative;
+		}
+
+		footer::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(44, 44, 44, 0.7);
+			z-index: 0;
+		}
+
+		.footer-container,
+		.footer-bottom {
+			position: relative;
+			z-index: 1;
+		}
+
+		.footer-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 2rem;
+		}
+
+		.footer-section h3 {
+			margin-bottom: 1rem;
+			color: #d4af37;
+		}
+
+		.footer-section p {
+			margin-bottom: 0.5rem;
+		}
+
+		.footer-section a {
+			color: #fff;
+			text-decoration: none;
+			transition: color 0.3s;
+		}
+
+		.footer-section a:hover {
+			color: #d4af37;
+		}
+
+		.footer-bottom {
+			max-width: 1200px;
+			margin: 2rem auto 0;
+			padding-top: 2rem;
+			border-top: 1px solid #444;
+			text-align: center;
+			color: #999;
+		}
+
+		@media (max-width: 768px) {
+			.nav-menu {
+				position: fixed;
+				left: -100%;
+				top: 70px;
+				flex-direction: column;
+				background: #fff;
+				width: 100%;
+				text-align: center;
+				transition: 0.3s;
+				box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+				padding: 2rem 0;
+			}
+
+			.nav-menu.active {
+				left: 0;
+			}
+
+			.hamburger {
+				display: flex;
+			}
+
+			.dropdown-menu {
+				position: static;
+				opacity: 1;
+				visibility: visible;
+				transform: none;
+				box-shadow: none;
+				padding-left: 1rem;
+			}
+
+			.submenu {
+				position: static;
+				opacity: 1;
+				visibility: visible;
+				transform: none;
+				box-shadow: none;
+				padding-left: 1.5rem;
+				background: rgba(0, 0, 0, 0.1);
+				margin-top: 0.5rem;
+			}
+
+			.hero h1 {
+				font-size: 2.5rem;
+			}
+
+			.hero-subtitle {
+				font-size: 1.1rem;
+			}
+
+			.section-title {
+				font-size: 1.8rem;
+			}
+
+			.section-description {
+				font-size: 1rem;
+			}
+
+			.products-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.centered-cards-container {
+				grid-template-columns: 1fr;
+				margin: 2rem auto;
+			}
+
+			.centered-cards-container .product-card {
+				max-width: 100%;
+				width: 100%;
+			}
+
+			.product-actions {
+				flex-direction: column;
+			}
+
+			.btn-primary,
+			.btn-secondary,
+			.btn-online {
+				width: 100%;
+				max-width: 100%;
+				padding: 0.85rem 1rem;
+			}
+
+			.whatsapp-float {
+				bottom: 1rem;
+				right: 1rem;
+			}
+
+			.whatsapp-btn {
+				padding: 0.75rem 1rem;
+				font-size: 0.9rem;
+			}
+
+			.whatsapp-btn span {
+				display: none;
+			}
+
+			.cart-header-button {
+				margin-right: 0.5rem;
+				padding: 0.6rem 0.8rem;
+			}
+
+			.cart-header-button svg {
+				width: 20px;
+				height: 20px;
+			}
+
+			.cart-count {
+				width: 20px;
+				height: 20px;
+				font-size: 0.65rem;
+				min-width: 20px;
+				top: -6px;
+				right: -6px;
+			}
+
+			.menu-showcase-title {
+				font-size: 2rem;
+			}
+
+			.menu-panel {
+				width: calc(50% - 0.5rem);
+				min-width: calc(50% - 0.5rem);
+				max-width: calc(50% - 0.5rem);
+				height: 300px;
+			}
+
+			.carousel-btn {
+				width: 40px;
+				height: 40px;
+				font-size: 1.2rem;
+			}
+
+			.carousel-btn.prev {
+				left: 5px;
+			}
+
+			.carousel-btn.next {
+				right: 5px;
+			}
+
+			.menu-panel-icon {
+				font-size: 3rem;
+			}
+
+			.menu-panel-text {
+				font-size: 0.85rem;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.menu-panels {
+				grid-template-columns: 1fr;
+			}
+
+			.menu-panel {
+				height: 250px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="navbar">
+			<div class="nav-container">
+				<div class="logo">
+					<img src="images/icono.png" alt="Logo" class="logo-icon">
+					<span>El Rincón del Antojo</span>
+					<img src="images/nahomi.png" alt="Nahomi" class="nahomi-image">
+				</div>
+				<ul class="nav-menu">
+					<li class="dropdown">
+						<a href="#">Menú ▾</a>
+						<ul class="dropdown-menu">
+							<li class="dropdown-submenu">
+								<a href="#charolas">Del Antojo al Gourmet ▸</a>
+								<ul class="submenu">
+									<li><a href="#charolas">Mixtas de Carnes y Quesos</a></li>
+									<li><a href="#quesos">Especial de Quesos</a></li>
+									<li><a href="#carnes">Especial de Carnes y Embutidos</a></li>
+								</ul>
+							</li>
+							<li class="dropdown-submenu">
+								<a href="#vinos">Vino Tinto ▸</a>
+								<ul class="submenu">
+									<li><a href="#vino1">L.A. Cetto Cabernet Sauvignon 750 ml</a></li>
+									<li><a href="#vino2">Vino Rosado Beringer white zinfandel 750 ml</a></li>
+									<li><a href="#vino3">Vino Tinto Riunite Lambrusco 750 ml</a></li>
+									<li><a href="#vino4">Vino Tinto Concha y Toro Reservado Cabernet Sauvignon Blend 750 ml</a></li>
+									<li><a href="#vino5">Vino Tinto Viña Maipo Cabernet Sauvignon 750 ml</a></li>
+									<li><a href="#vino6">Vino Tinto Castillo Bobal Shiraz 750 ml</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><a href="nosotros.html">Nosotros</a></li>
+					<li><a href="file:///C:/Users/Noel%20Pacheco/Desktop/Proyectos%20Cursor/Proyectos/El-Rincon-de-las-Tablas/contacto.html">Contacto</a></li>
+				</ul>
+				<a href="pedido.html" class="cart-header-button" aria-label="Carrito de compras" id="cartButton">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.15.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+					</svg>
+					<span class="cart-count hidden" id="cartCount">0</span>
+				</a>
+				<div class="hamburger">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<div class="charolas-page">
+			<!-- Hero Section -->
+			<section class="hero" id="inicio">
+				<div class="hero-content">
+					<h1>Del Antojo al Gourmet</h1>
+					<div class="divider"></div>
+					<p class="hero-subtitle">Prueba las geniales combinaciones de nuestras Del Antojo al Gourmet</p>
+					<div class="order-info">
+						<p class="order-text">Haz tu Pedido y recoge en una Hora</p>
+						<p class="schedule">Lunes a Viernes de 10 a.m. a 8 p.m.</p>
+						<p class="schedule">Sábado de 10 a.m. a 3 p.m.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Tablas Mixtas -->
+			<section class="product-section" id="charolas">
+				<div class="container">
+					<h2 class="section-title">Antojos Mixtas Carnes, Quesos y Embutidos</h2>
+					<p class="section-description">
+						Quesos y Carnes, con acompañamientos para un rico Mermeladas  (Fresa, Chavacano y Frutos Rojos), Aceitunas Verde y negra, Chocolate amargo, Pistaches, Uvas, Galletas Breton y  porción de Pan
+					</p>
+					<div class="products-grid">
+						<div class="product-card">
+							<div class="product-image charola-mixta-pequeña-image">
+							</div>
+							<div class="product-info">
+								<h3>Antojo Mixta Pequeña</h3>
+								<p class="personas-count">(3 Personas)</p>
+								<div class="product-actions">
+									<span class="btn-secondary" style="font-size: 1rem; cursor: default;">Precio $430.00</span>
+									<a href="#" class="btn-primary add-to-cart" data-product="Tabla Mixta Pequeña para (3 Personas)">Hacer Pedido</a>
+								</div>
+							</div>
+						</div>
+						<div class="product-card">
+							<div class="product-image charola-mixta-mediana-image">
+							</div>
+							<div class="product-info">
+								<h3>Antojo Mixta Mediana</h3>
+								<p class="personas-count">(5-6 Personas)</p>
+								<div class="product-actions">
+									<span class="btn-secondary" style="font-size: 1rem; cursor: default;">Precio $690.00</span>
+									<a href="#" class="btn-primary add-to-cart" data-product="Tabla Mixta Mediana para (5-6 Personas)">Hacer Pedido</a>
+								</div>
+							</div>
+						</div>
+						<div class="product-card">
+							<div class="product-image charola-mixta-grande-tablagrande-image">
+							</div>
+							<div class="product-info">
+								<h3>Antojo Mixta Grande</h3>
+								<p class="personas-count">(8-10 Personas)</p>
+								<div class="product-actions">
+									<span class="btn-secondary" style="font-size: 1rem; cursor: default;">Precio $1,250.00</span>
+									<a href="#" class="btn-primary add-to-cart" data-product="Tabla Mixta Grande para (8-10 Personas)">Hacer Pedido</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="centered-cards-container">
+						<div class="product-card">
+							<div class="product-image charola-individual-image">
+							</div>
+							<div class="product-info">
+								<h3>Antojo Mixta Extra Individual</h3>
+								<p class="personas-count">(1 Personas)</p>
+								<div class="product-actions">
+									<span class="btn-secondary" style="font-size: 1rem; cursor: default;">Precio $250.00</span>
+									<a href="#" class="btn-primary add-to-cart" data-product="Tabla Mixta Extra Individual para (1 Personas)">Hacer Pedido</a>
+								</div>
+							</div>
+						</div>
+						<div class="product-card">
+							<div class="product-image charola-mixta-image">
+							</div>
+							<div class="product-info">
+								<h3>Arma tu Antojo</h3>
+								<div class="product-actions">
+									<a href="arma.html" class="btn-primary">Personalizar</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Antojo Especial de Quesos -->
+			<section class="product-section alt-section" id="quesos">
+				<div class="container">
+					<h2 class="section-title">Antojo Especial de Quesos</h2>
+					<p class="section-description">
+						Quesos Madurados, con acompañamientos para un rico maridaje, Arúgula fresca, Tomate Cherry, 
+						Uvas Verdes, Uvas Moradas, Higos Frescos, Ate, Frutos Secos, Miel, Mermelada de Frutos Rojos, 
+						Mermelada de Maracuya y porción de Pan.
+					</p>
+					<div class="products-grid">
+						<div class="product-card">
+							<a href="#charolas" style="display: block; text-decoration: none; width: 100%; height: 250px; position: relative; z-index: 10;">
+								<div class="product-image charola-quesos-image" style="cursor: pointer; width: 100%; height: 100%;">
+								</div>
+							</a>
+							<div class="product-info">
+								<h3>Antojo de Quesos <span style="font-size: 0.7em;">(5-6 personas)</span></h3>
+								<div class="product-actions">
+									<span class="btn-secondary" style="font-size: 1rem; cursor: default;">Precio $850.00</span>
+									<a href="#" class="btn-primary add-to-cart" data-product="Tabla Especial de Quesos">Hacer Pedido</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Antojo Especial de Carnes y Embutidos -->
+			<section class="product-section" id="carnes">
+				<div class="container">
+					<h2 class="section-title">Antojos Especial de Carnes y Embutidos</h2>
+					<p class="section-description">
+						Carnes y Embutidos, incluyen Jamón Serrano joven y reserva, con acompañamientos para un rico maridaje, 
+						Alioli de la casa, Mostaza Dijon preparada, Salsa Tumaca, Arúgula fresca y/o Espinaca Baby, 
+						Tomate Cherry, Aceitunas, Vegetales Encurtidos, Nueces, Uvas Moradas, Higos Frescos, 
+						Chabacano Deshidratado y porción de Pan.
+					</p>
+					<div class="products-grid">
+						<div class="product-card">
+							<div class="product-image charola-carnes-image">
+							</div>
+							<div class="product-info">
+								<h3>Antojo de Carnes y Embutidos <span style="font-size: 0.7em;">(5-6 personas)</span></h3>
+								<div class="product-actions">
+									<span class="btn-secondary" style="font-size: 1rem; cursor: default;">Precio $850.00</span>
+									<a href="#" class="btn-primary add-to-cart" data-product="Tabla Especial de Carnes y Embutidos">Hacer Pedido</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- WhatsApp Button -->
+			<div class="whatsapp-float">
+				<a href="https://wa.me/5233113263713" class="whatsapp-btn" aria-label="Contactar por WhatsApp">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+					</svg>
+					<span>Mandar WhatsApp</span>
+				</a>
+			</div>
+		</div>
+
+		<!-- Sección Menú Showcase -->
+		<section class="menu-showcase" id="vinos">
+			<div class="menu-showcase-container">
+				<h2 class="menu-showcase-title">Para un momento inolvidable, agrégale un Vino Tinto</h2>
+				<div class="carousel-container">
+					<button class="carousel-btn prev" id="prevBtn">‹</button>
+					<div class="menu-panels" id="menuPanels">
+					<div class="menu-panel menu-panel-1" id="vino1">
+						<div class="menu-panel-content">
+							<div class="menu-panel-top-content">
+								<div class="menu-panel-text">L.A. Cetto Cabernet Sauvignon 750 ml</div>
+							</div>
+							<button class="menu-panel-price-btn add-to-cart" data-product="L.A. Cetto Cabernet Sauvignon 750 ml">Precio $240.00</button>
+						</div>
+					</div>
+					<div class="menu-panel menu-panel-2" id="vino2">
+						<div class="menu-panel-content">
+							<div class="menu-panel-top-content">
+								<div class="menu-panel-text">Vino Rosado Beringer white zinfandel 750 ml</div>
+							</div>
+							<button class="menu-panel-price-btn add-to-cart" data-product="Vino Rosado Beringer white zinfandel 750 ml">Precio $375.00</button>
+						</div>
+					</div>
+					<div class="menu-panel menu-panel-3" id="vino3">
+						<div class="menu-panel-content">
+							<div class="menu-panel-top-content">
+								<div class="menu-panel-text">Vino Tinto Riunite Lambrusco 750 ml</div>
+							</div>
+							<button class="menu-panel-price-btn add-to-cart" data-product="Vino Tinto Riunite Lambrusco 750 ml">Precio $208.00</button>
+						</div>
+					</div>
+					<div class="menu-panel menu-panel-4" id="vino4">
+						<div class="menu-panel-content">
+							<div class="menu-panel-top-content">
+								<div class="menu-panel-text">Vino Tinto Concha y Toro Reservado Cabernet Sauvignon Blend 750 ml</div>
+							</div>
+							<button class="menu-panel-price-btn add-to-cart" data-product="Vino Tinto Concha y Toro Reservado Cabernet Sauvignon Blend 750 ml">Precio $175.00</button>
+						</div>
+					</div>
+					<div class="menu-panel menu-panel-5" id="vino5">
+						<div class="menu-panel-content">
+							<div class="menu-panel-top-content">
+								<div class="menu-panel-text">Vino Tinto Viña Maipo Cabernet Sauvignon 750 ml</div>
+							</div>
+							<button class="menu-panel-price-btn add-to-cart" data-product="Vino Tinto Viña Maipo Cabernet Sauvignon 750 ml">Precio $150.00</button>
+						</div>
+					</div>
+					<div class="menu-panel menu-panel-6" id="vino6">
+						<div class="menu-panel-content">
+							<div class="menu-panel-top-content">
+								<div class="menu-panel-text">Vino Tinto Castillo Bobal Shiraz 750 ml</div>
+							</div>
+							<button class="menu-panel-price-btn add-to-cart" data-product="Vino Tinto Castillo Bobal Shiraz 750 ml">Precio $110.00</button>
+						</div>
+					</div>
+					</div>
+					<button class="carousel-btn next" id="nextBtn">›</button>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer id="contacto">
+		<div class="footer-container">
+			<div class="footer-section">
+				<h3>📍 Ubicación</h3>
+				<p>Avenida Xalisco, Col. Valle de Matatipac, Tepic, Nayarit, Mexico</p>
+				<p>C.P. 63190</p>
+			</div>
+			<div class="footer-section">
+				<h3>📞 Contáctanos</h3>
+				<p><a href="mailto:noemiaraeli553@gmail.com">noemiaraeli553@gmail.com</a></p>
+			</div>
+			<div class="footer-section">
+				<h3>🕐 Horarios</h3>
+				<p>Lunes a Viernes: 10 a.m. - 8 p.m.</p>
+				<p>Sábado: 10 a.m. - 3 p.m.</p>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<p>&copy; 2025 El Rincón del Antojo. Todos los derechos reservados.</p>
+		</div>
+	</footer>
+
+	<script>
+		// Menú móvil hamburguesa
+		const hamburger = document.querySelector('.hamburger');
+		const navMenu = document.querySelector('.nav-menu');
+
+		if (hamburger && navMenu) {
+			hamburger.addEventListener('click', () => {
+				navMenu.classList.toggle('active');
+				hamburger.classList.toggle('active');
+			});
+
+			// Cerrar menú al hacer clic en un enlace
+			document.querySelectorAll('.nav-menu a').forEach(link => {
+				link.addEventListener('click', () => {
+					navMenu.classList.remove('active');
+					hamburger.classList.remove('active');
+				});
+			});
+		}
+
+		// Funcionalidad del carrito
+		function getCart() {
+			const cart = localStorage.getItem('cart');
+			return cart ? JSON.parse(cart) : [];
+		}
+
+		function saveCart(cart) {
+			localStorage.setItem('cart', JSON.stringify(cart));
+		}
+
+		function updateCartCount() {
+			const cart = getCart();
+			const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+			const cartCount = document.getElementById('cartCount');
+			
+			if (cartCount) {
+				if (totalItems > 0) {
+					cartCount.textContent = totalItems;
+					cartCount.classList.remove('hidden');
+				} else {
+					cartCount.classList.add('hidden');
+				}
+			}
+		}
+
+		function addToCart(productName, buttonElement) {
+			const cart = getCart();
+			const existingProduct = cart.find(item => item.name === productName);
+
+			// Definir precios de productos
+			const productPrices = {
+				'Tabla Mixta Pequeña para (3 Personas)': 430.00,
+				'Tabla Mixta Mediana para (5-6 Personas)': 690.00,
+				'Tabla Mixta Grande para (8-10 Personas)': 1250.00,
+				'Tabla Mixta Extra Individual para (1 Personas)': 250.00,
+				'Tabla Especial de Quesos': 850.00,
+				'L.A. Cetto Cabernet Sauvignon 750 ml': 240.00,
+				'Vino Rosado Beringer white zinfandel 750 ml': 375.00,
+				'Vino Tinto Riunite Lambrusco 750 ml': 208.00,
+				'Vino Tinto Concha y Toro Reservado Cabernet Sauvignon Blend 750 ml': 175.00,
+				'Vino Tinto Viña Maipo Cabernet Sauvignon 750 ml': 150.00,
+				'Vino Tinto Castillo Bobal Shiraz 750 ml': 110.00
+			};
+
+			if (existingProduct) {
+				existingProduct.quantity += 1;
+				// Asegurar que el precio se agregue si no existe pero está definido
+				if (!existingProduct.price && productPrices[productName] !== undefined) {
+					existingProduct.price = productPrices[productName];
+				}
+			} else {
+				const newItem = {
+					name: productName,
+					quantity: 1
+				};
+				// Agregar precio si existe para este producto
+				if (productPrices[productName] !== undefined) {
+					newItem.price = productPrices[productName];
+				}
+				cart.push(newItem);
+			}
+
+			saveCart(cart);
+			updateCartCount();
+
+			// Mostrar mensaje de confirmación
+			if (buttonElement) {
+				const originalText = buttonElement.textContent;
+				const originalBackground = buttonElement.style.background || '';
+				buttonElement.textContent = '✓ Agregado';
+				buttonElement.style.background = '#25D366';
+				
+				setTimeout(() => {
+					buttonElement.textContent = originalText;
+					buttonElement.style.background = originalBackground || '#8B4513';
+				}, 1500);
+			}
+		}
+
+		// Agregar event listeners a los botones "Hacer Pedido" y botones de precio del carrusel
+		document.querySelectorAll('.add-to-cart').forEach(button => {
+			button.addEventListener('click', function(e) {
+				e.preventDefault();
+				const productName = this.getAttribute('data-product');
+				if (productName) {
+					addToCart(productName, this);
+				}
+			});
+		});
+
+		// Actualizar contador al cargar la página
+		updateCartCount();
+
+		// Asegurar que el enlace de la imagen de quesos funcione
+		document.addEventListener('DOMContentLoaded', function() {
+			const quesosImageLink = document.querySelector('a[href="#charolas"]');
+			if (quesosImageLink) {
+				quesosImageLink.addEventListener('click', function(e) {
+					e.stopPropagation();
+					const targetSection = document.getElementById('charolas');
+					if (targetSection) {
+						targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}
+				});
+			}
+
+			// Funcionalidad para enlaces del menú de vinos
+			document.querySelectorAll('a[href^="#vino"]').forEach(link => {
+				link.addEventListener('click', function(e) {
+					e.preventDefault();
+					const targetId = this.getAttribute('href').substring(1);
+					const targetElement = document.getElementById(targetId);
+					if (targetElement) {
+						// Cerrar menú móvil si está abierto
+						const navMenu = document.querySelector('.nav-menu');
+						const hamburger = document.querySelector('.hamburger');
+						if (navMenu && navMenu.classList.contains('active')) {
+							navMenu.classList.remove('active');
+							hamburger.classList.remove('active');
+						}
+						// Scroll suave hacia la tarjeta específica
+						setTimeout(() => {
+							targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+						}, 100);
+					}
+				});
+			});
+
+			// Funcionalidad para el enlace principal "Vino Tinto"
+			const vinosLink = document.querySelector('a[href="#vinos"]');
+			if (vinosLink) {
+				vinosLink.addEventListener('click', function(e) {
+					e.preventDefault();
+					const targetSection = document.getElementById('vinos');
+					if (targetSection) {
+						// Cerrar menú móvil si está abierto
+						const navMenu = document.querySelector('.nav-menu');
+						const hamburger = document.querySelector('.hamburger');
+						if (navMenu && navMenu.classList.contains('active')) {
+							navMenu.classList.remove('active');
+							hamburger.classList.remove('active');
+						}
+						targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}
+				});
+			}
+
+			// Funcionalidad del carrusel
+			const menuPanels = document.getElementById('menuPanels');
+			const prevBtn = document.getElementById('prevBtn');
+			const nextBtn = document.getElementById('nextBtn');
+
+			if (menuPanels && prevBtn && nextBtn) {
+				const scrollAmount = menuPanels.offsetWidth / 4; // Scroll por una tarjeta
+				let autoScrollInterval;
+				let isPaused = false;
+
+				function updateButtons() {
+					prevBtn.disabled = menuPanels.scrollLeft <= 0;
+					nextBtn.disabled = menuPanels.scrollLeft >= menuPanels.scrollWidth - menuPanels.offsetWidth - 10;
+				}
+
+				function startAutoScroll() {
+					if (autoScrollInterval) {
+						clearInterval(autoScrollInterval);
+					}
+					autoScrollInterval = setInterval(() => {
+						if (!isPaused) {
+							const maxScroll = menuPanels.scrollWidth - menuPanels.offsetWidth;
+							if (menuPanels.scrollLeft >= maxScroll - 10) {
+								// Si llegamos al final, volver al inicio
+								menuPanels.scrollTo({
+									left: 0,
+									behavior: 'smooth'
+								});
+							} else {
+								// Avanzar una tarjeta
+								menuPanels.scrollBy({
+									left: scrollAmount,
+									behavior: 'smooth'
+								});
+							}
+							updateButtons();
+						}
+					}, 3000); // Mover cada 3 segundos
+				}
+
+				function pauseAutoScroll() {
+					isPaused = true;
+				}
+
+				function resumeAutoScroll() {
+					isPaused = false;
+				}
+
+				prevBtn.addEventListener('click', () => {
+					pauseAutoScroll();
+					menuPanels.scrollBy({
+						left: -scrollAmount,
+						behavior: 'smooth'
+					});
+					setTimeout(resumeAutoScroll, 5000); // Reanudar después de 5 segundos
+				});
+
+				nextBtn.addEventListener('click', () => {
+					pauseAutoScroll();
+					menuPanels.scrollBy({
+						left: scrollAmount,
+						behavior: 'smooth'
+					});
+					setTimeout(resumeAutoScroll, 5000); // Reanudar después de 5 segundos
+				});
+
+				// Pausar cuando el usuario interactúa con el carrusel
+				menuPanels.addEventListener('mouseenter', pauseAutoScroll);
+				menuPanels.addEventListener('mouseleave', resumeAutoScroll);
+				menuPanels.addEventListener('touchstart', pauseAutoScroll);
+				menuPanels.addEventListener('touchend', () => {
+					setTimeout(resumeAutoScroll, 5000);
+				});
+
+				menuPanels.addEventListener('scroll', updateButtons);
+				updateButtons(); // Inicializar estado de botones
+				
+				// Iniciar el movimiento automático
+				startAutoScroll();
+			}
+		});
+	</script>
+</body>
+</html>
+

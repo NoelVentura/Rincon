@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="El Rincón del Antojo - Conoce nuestra historia y pasión por los productos gourmet">
+	<title>El Rincón del Antojo - Nosotros</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			margin: 0;
+			width: 100%;
+			min-height: 100vh;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			color: #333;
+			line-height: 1.6;
+		}
+
+		header {
+			background: rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(10px);
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		.navbar {
+			padding: 1rem 2rem;
+		}
+
+		.nav-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.logo {
+			font-size: 1.5rem;
+			font-weight: bold;
+			color: #8B4513;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.logo span {
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+			margin-right: 1rem;
+		}
+
+		.logo-icon {
+			height: 70px;
+			width: auto;
+			object-fit: contain;
+		}
+
+		.nahomi-image {
+			height: 70px;
+			width: auto;
+			object-fit: contain;
+		}
+
+		.nav-menu {
+			display: flex;
+			list-style: none;
+			gap: 2rem;
+			align-items: center;
+		}
+
+		.nav-menu a {
+			text-decoration: none;
+			color: #333;
+			font-weight: 500;
+			transition: color 0.3s;
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+		}
+
+		.nav-menu a:hover {
+			color: #8B4513;
+		}
+
+		.dropdown {
+			position: relative;
+		}
+
+		.dropdown-menu {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			background: #fff;
+			list-style: none;
+			padding: 0.5rem 0;
+			min-width: 200px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(-10px);
+			transition: all 0.3s;
+		}
+
+		.dropdown:hover .dropdown-menu {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+
+		.dropdown-menu li {
+			padding: 0.5rem 1rem;
+		}
+
+		.dropdown-menu a {
+			display: block;
+			font-size: 0.85rem;
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+		}
+
+		.dropdown-submenu {
+			position: relative;
+		}
+
+		.submenu {
+			position: absolute;
+			left: 100%;
+			top: 0;
+			background: #2c2c2c;
+			list-style: none;
+			padding: 0.5rem 0;
+			min-width: 250px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+			opacity: 0;
+			visibility: hidden;
+			transform: translateX(-10px);
+			transition: all 0.3s;
+		}
+
+		.dropdown-submenu:hover .submenu {
+			opacity: 1;
+			visibility: visible;
+			transform: translateX(0);
+		}
+
+		.submenu li {
+			padding: 0.5rem 1rem;
+		}
+
+		.submenu a {
+			display: block;
+			color: #e0e0e0;
+			text-shadow: none;
+		}
+
+		.submenu a:hover {
+			color: #fff;
+			background: rgba(255, 255, 255, 0.1);
+		}
+
+		.hamburger {
+			display: none;
+			flex-direction: column;
+			cursor: pointer;
+			gap: 4px;
+		}
+
+		.hamburger span {
+			width: 25px;
+			height: 3px;
+			background: #333;
+			transition: all 0.3s;
+		}
+
+		main {
+			min-height: calc(100vh - 200px);
+		}
+
+		.hero-nosotros {
+			background-image: url('images/fondo.png');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			color: white;
+			padding: 4rem 2rem;
+			text-align: center;
+			position: relative;
+		}
+
+		.hero-nosotros::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.3);
+			z-index: 0;
+		}
+
+		.hero-nosotros-content {
+			position: relative;
+			z-index: 1;
+			max-width: 900px;
+			margin: 0 auto;
+		}
+
+		.hero-nosotros h1 {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+			font-weight: 700;
+			text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+		}
+
+		.divider {
+			width: 100px;
+			height: 3px;
+			background: #d4af37;
+			margin: 1.5rem auto;
+		}
+
+		.content-section {
+			padding: 4rem 2rem;
+			background: #f8f8f8;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.about-content {
+			max-width: 900px;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		.about-content h2 {
+			font-size: 2.5rem;
+			color: #8B4513;
+			margin-bottom: 2rem;
+		}
+
+		.about-content p {
+			font-size: 1.1rem;
+			color: #666;
+			line-height: 1.8;
+			margin-bottom: 2rem;
+			text-align: left;
+		}
+
+		.about-content h3 {
+			font-size: 2rem;
+			color: #8B4513;
+			margin: 3rem 0 1.5rem;
+			text-align: center;
+		}
+
+		.image-section {
+			padding: 2rem;
+			text-align: center;
+			background: white;
+		}
+
+		.image-placeholder {
+			width: 100%;
+			max-width: 600px;
+			height: 400px;
+			background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+			margin: 0 auto;
+			border-radius: 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 3rem;
+			color: #999;
+		}
+
+		.nosotros-image {
+			width: 100%;
+			max-width: 600px;
+			height: auto;
+			margin: 0 auto;
+			border-radius: 15px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+			display: block;
+		}
+
+		.whatsapp-float {
+			position: fixed;
+			bottom: 2rem;
+			right: 2rem;
+			z-index: 999;
+		}
+
+		.whatsapp-btn {
+			background: #25D366;
+			color: white;
+			padding: 1rem 1.5rem;
+			border-radius: 50px;
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			text-decoration: none;
+			box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+			transition: all 0.3s;
+			font-weight: 600;
+		}
+
+		.whatsapp-btn:hover {
+			background: #20BA5A;
+			transform: scale(1.05);
+			box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+		}
+
+		.whatsapp-btn svg {
+			width: 24px;
+			height: 24px;
+		}
+
+		footer {
+			background: #2c2c2c url('images/bajo.png');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			color: #fff;
+			padding: 3rem 2rem 1rem;
+			margin-top: 4rem;
+			position: relative;
+		}
+
+		footer::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(44, 44, 44, 0.7);
+			z-index: 0;
+		}
+
+		.footer-container,
+		.footer-bottom {
+			position: relative;
+			z-index: 1;
+		}
+
+		.footer-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 2rem;
+		}
+
+		.footer-section h3 {
+			margin-bottom: 1rem;
+			color: #d4af37;
+		}
+
+		.footer-section p {
+			margin-bottom: 0.5rem;
+		}
+
+		.footer-section a {
+			color: #fff;
+			text-decoration: none;
+			transition: color 0.3s;
+		}
+
+		.footer-section a:hover {
+			color: #d4af37;
+		}
+
+		.footer-bottom {
+			max-width: 1200px;
+			margin: 2rem auto 0;
+			padding-top: 2rem;
+			border-top: 1px solid #444;
+			text-align: center;
+			color: #999;
+		}
+
+		@media (max-width: 768px) {
+			.nav-menu {
+				position: fixed;
+				left: -100%;
+				top: 70px;
+				flex-direction: column;
+				background: #fff;
+				width: 100%;
+				text-align: center;
+				transition: 0.3s;
+				box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+				padding: 2rem 0;
+			}
+
+			.nav-menu.active {
+				left: 0;
+			}
+
+			.hamburger {
+				display: flex;
+			}
+
+			.dropdown-menu {
+				position: static;
+				opacity: 1;
+				visibility: visible;
+				transform: none;
+				box-shadow: none;
+				padding-left: 1rem;
+			}
+
+			.submenu {
+				position: static;
+				opacity: 1;
+				visibility: visible;
+				transform: none;
+				box-shadow: none;
+				padding-left: 1.5rem;
+				background: rgba(0, 0, 0, 0.1);
+				margin-top: 0.5rem;
+			}
+
+			.hero-nosotros h1 {
+				font-size: 2rem;
+			}
+
+			.about-content h2 {
+				font-size: 2rem;
+			}
+
+			.about-content h3 {
+				font-size: 1.5rem;
+			}
+
+			.whatsapp-float {
+				bottom: 1rem;
+				right: 1rem;
+			}
+
+			.whatsapp-btn {
+				padding: 0.75rem 1rem;
+				font-size: 0.9rem;
+			}
+
+			.whatsapp-btn span {
+				display: none;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="navbar">
+			<div class="nav-container">
+				<div class="logo">
+					<img src="images/icono.png" alt="Logo" class="logo-icon">
+					<span>El Rincón del Antojo</span>
+					<img src="images/nahomi.png" alt="Nahomi" class="nahomi-image">
+				</div>
+				<ul class="nav-menu">
+					<li><a href="file:///C:/Users/Noel%20Pacheco/Desktop/Proyectos%20Cursor/Proyectos/El-Rincon-de-las-Tablas/charolas.html">Inicio</a></li>
+					<li class="dropdown">
+						<a href="#">Menú ▾</a>
+						<ul class="dropdown-menu">
+							<li><a href="charolas.html#charolas">Del Antojo al Gourmet ▶</a></li>
+							<li><a href="charolas.html#vinos">Vino Tinto ▶</a></li>
+						</ul>
+					</li>
+					<li><a href="contacto.html">Contacto</a></li>
+				</ul>
+				<div class="hamburger">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<section class="hero-nosotros">
+			<div class="hero-nosotros-content">
+				<h1>Acerca de</h1>
+				<div class="divider"></div>
+			</div>
+		</section>
+
+		<section class="content-section">
+			<div class="container">
+				<div class="about-content">
+					<p>
+						Nos dimos a la tarea de seleccionar cuidadosamente muchas de las cosas que más nos gustan, 
+						para ponerlas a su disposición en nuestra Gastrotienda, empezando por una interesante variedad 
+						de Productos Gourmet Nacionales e Importados, así como Vinos de varias regiones del mundo y de 
+						diversos estilos, eligiendo más de 300 etiquetas de Vino tanto del Viejo Mundo como del Nuevo Mundo, 
+						entre las cuales sin duda, más de una los enamorará, ya sea de la selección de nuestra cava, 
+						como de las opciones que puedes disfrutar por copeo en nuestras Tardes de WineBar!!
+					</p>
+
+					<h3>El Rincón del Antojo</h3>
+
+					<p>
+						Somos amantes de los Quesos Finos, artesanales, de buena calidad y de diversos tipos, por lo que hemos 
+						reunido una interesante variedad de estos, tanto Nacionales como Importados y no podemos dejar de presumir 
+						que, hoy día contamos con varios de los mejores y más premiados Quesos de Latinoamérica, que son orgullosamente 
+						producidos por empresarios Mexicanos.
+					</p>
+
+					<p>
+						No podíamos dejar de lado el contar con una buena selección de Carnes Frías, Embutidos Madurados y Jamones Ibéricos, 
+						que junto con los fabulosos Quesos, son los mejores compañeros de un buen Vino o una buena Cerveza.
+					</p>
+
+					<div class="image-section">
+						<img src="images/nosotros.jpg" alt="El Rincón del Antojo" class="nosotros-image">
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="whatsapp-float">
+			<a href="https://wa.me/5233113263713" class="whatsapp-btn" aria-label="Contactar por WhatsApp">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+				</svg>
+				<span>Mandar WhatsApp</span>
+			</a>
+		</div>
+	</main>
+
+	<footer id="contacto">
+		<div class="footer-container">
+			<div class="footer-section">
+				<h3>📍 Ubicación</h3>
+				<p>Avenida Xalisco, Col. Valle de Matatipac, Tepic, Nayarit, Mexico</p>
+				<p>C.P. 63190</p>
+			</div>
+			<div class="footer-section">
+				<h3>📞 Contáctanos</h3>
+				<p><a href="mailto:noemiaraeli553@gmail.com">noemiaraeli553@gmail.com</a></p>
+			</div>
+			<div class="footer-section">
+				<h3>🕐 Horarios</h3>
+				<p>Lunes a Viernes: 10 a.m. - 8 p.m.</p>
+				<p>Sábado: 10 a.m. - 3 p.m.</p>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<p>&copy; 2025 El Rincón del Antojo. Todos los derechos reservados.</p>
+		</div>
+	</footer>
+
+	<script>
+		const hamburger = document.querySelector('.hamburger');
+		const navMenu = document.querySelector('.nav-menu');
+
+		if (hamburger && navMenu) {
+			hamburger.addEventListener('click', () => {
+				navMenu.classList.toggle('active');
+				hamburger.classList.toggle('active');
+			});
+
+			document.querySelectorAll('.nav-menu a').forEach(link => {
+				link.addEventListener('click', () => {
+					navMenu.classList.remove('active');
+					hamburger.classList.remove('active');
+				});
+			});
+		}
+	</script>
+</body>
+</html>
+
