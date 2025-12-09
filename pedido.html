@@ -69,6 +69,10 @@
 			object-fit: contain;
 		}
 
+		.by-nahomi {
+			display: none;
+		}
+
 		.nav-menu {
 			display: flex;
 			list-style: none;
@@ -575,6 +579,34 @@
 		}
 
 		@media (max-width: 768px) {
+			.logo-icon,
+			.nahomi-image {
+				height: 50px;
+			}
+
+			.by-nahomi {
+				display: block;
+				font-family: 'Brush Script MT', 'Lucida Handwriting', cursive, serif;
+				font-style: italic;
+				color: #000;
+				font-size: 1rem;
+				margin-top: 0.25rem;
+				text-align: center;
+				font-weight: 400;
+				letter-spacing: 0.5px;
+			}
+
+			.logo {
+				flex-direction: column;
+				align-items: center;
+				gap: 0.25rem;
+			}
+
+			.logo span {
+				font-size: 0.85rem;
+				margin-right: 0;
+			}
+
 			.nav-menu {
 				position: fixed;
 				left: -100%;
@@ -638,6 +670,7 @@
 					<img src="images/icono.png" alt="Logo" class="logo-icon">
 					<span>El Rincón del Antojo</span>
 					<img src="images/nahomi.png" alt="Nahomi" class="nahomi-image">
+					<span class="by-nahomi">by Nahomi</span>
 				</div>
 				<ul class="nav-menu">
 					<li><a href="index.html">Inicio</a></li>
