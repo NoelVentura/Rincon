@@ -1,0 +1,35 @@
+INSTRUCCIONES PARA SUBIR ARCHIVOS A GITHUB
+===========================================
+
+1. Abre PowerShell en esta carpeta
+
+2. Ejecuta estos comandos uno por uno:
+
+   git init
+   git remote add origin https://github.com/NoelVentura/Rincondelantojo-.git
+   git add charolas.html arma.html contacto.html nosotros.html pedido.html index.html .nojekyll
+   git add images/
+   git add videos/
+   git commit -m "Sitio web completo"
+   git branch -M main
+   git push -u origin main
+
+3. Si te pide credenciales:
+   - Usuario: tu usuario de GitHub (NoelVentura)
+   - Contraseña: usa un Personal Access Token (NO tu contraseña normal)
+   
+   Para crear un Personal Access Token:
+   - Ve a GitHub.com > Settings > Developer settings > Personal access tokens > Tokens (classic)
+   - Genera un nuevo token con permisos "repo"
+   - Copia el token y úsalo como contraseña
+
+4. Después de subir, configura GitHub Pages:
+   - Ve a https://github.com/NoelVentura/Rincondelantojo-/settings/pages
+   - Source: Deploy from a branch
+   - Branch: main
+   - Folder: / (root)
+   - Save
+
+5. Tu sitio estará en:
+   https://noelventura.github.io/Rincondelantojo-/
+

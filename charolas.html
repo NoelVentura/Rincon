@@ -286,7 +286,28 @@
 		}
 
 		.charolas-page {
-			background: #f8f8f8;
+			background-image: url('images/tablapequeña.jpg');
+			background-position: center center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			position: relative;
+		}
+
+		.charolas-page::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(248, 248, 248, 0.6);
+			z-index: 0;
+		}
+
+		.charolas-page > * {
+			position: relative;
+			z-index: 1;
 		}
 
 		.hero {
@@ -1239,7 +1260,7 @@
 						</ul>
 					</li>
 					<li><a href="nosotros.html">Nosotros</a></li>
-					<li><a href="file:///C:/Users/Noel%20Pacheco/Desktop/Proyectos%20Cursor/Proyectos/El-Rincon-de-las-Tablas/contacto.html">Contacto</a></li>
+					<li><a href="contacto.html">Contacto</a></li>
 				</ul>
 				<a href="pedido.html" class="cart-header-button" aria-label="Carrito de compras" id="cartButton">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">

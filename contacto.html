@@ -119,11 +119,16 @@
 
 		.dropdown-menu a {
 			display: block;
+			font-size: 0.9rem;
 			text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
 		}
 
 		.dropdown-submenu {
 			position: relative;
+		}
+
+		.dropdown-submenu > a {
+			font-size: 0.85rem;
 		}
 
 		.submenu {
@@ -154,6 +159,7 @@
 		.submenu a {
 			display: block;
 			color: #e0e0e0;
+			font-size: 0.85rem;
 			text-shadow: none;
 		}
 
@@ -234,8 +240,11 @@
 		}
 
 		.contact-wrapper {
-			max-width: 600px;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 2rem;
 			margin: 2rem auto 0;
+			align-items: start;
 		}
 
 		.contact-info {
@@ -243,6 +252,29 @@
 			padding: 2rem;
 			border-radius: 15px;
 			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+		}
+
+		.video-container {
+			background: white;
+			padding: 2rem;
+			border-radius: 15px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+			position: sticky;
+			top: 100px;
+		}
+
+		.video-container h3 {
+			font-size: 1.5rem;
+			color: #8B4513;
+			margin-bottom: 1.5rem;
+			text-align: center;
+		}
+
+		.video-container video {
+			width: 100%;
+			height: auto;
+			border-radius: 10px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 		}
 
 		.contact-info h3 {
@@ -415,6 +447,15 @@
 			.hero-contacto h1 {
 				font-size: 2rem;
 			}
+
+			.contact-wrapper {
+				grid-template-columns: 1fr;
+			}
+
+			.video-container {
+				position: static;
+				margin-top: 2rem;
+			}
 		}
 	</style>
 </head>
@@ -428,37 +469,29 @@
 					<img src="images/nahomi.png" alt="Nahomi" class="nahomi-image">
 				</div>
 				<ul class="nav-menu">
-					<li><a href="file:///C:/Users/Noel%20Pacheco/Desktop/Proyectos%20Cursor/Proyectos/El-Rincon-de-las-Tablas/charolas.html">Inicio</a></li>
+					<li><a href="charolas.html">Inicio</a></li>
 					<li class="dropdown">
 						<a href="#">Menú ▾</a>
 						<ul class="dropdown-menu">
 							<li class="dropdown-submenu">
-								<a href="charolas.html#charolas">Charolas Gourmet ▸</a>
+								<a href="index.html#charolas">Del Antojo al Gourmet ▸</a>
 								<ul class="submenu">
-									<li><a href="charolas.html#charolas">Mixtas de Carnes y Quesos</a></li>
-									<li><a href="charolas.html#quesos">Especial de Quesos</a></li>
-									<li><a href="charolas.html#carnes">Especial de Carnes y Embutidos</a></li>
+									<li><a href="index.html#charolas">Mixtas de Carnes y Quesos</a></li>
+									<li><a href="index.html#quesos">Especial de Quesos</a></li>
+									<li><a href="index.html#carnes">Especial de Carnes y Embutidos</a></li>
 								</ul>
 							</li>
-							<li><a href="#tapas">Tapas Españolas</a></li>
 							<li class="dropdown-submenu">
-								<a href="#baguettes">Baguettes Gourmet ▸</a>
+								<a href="index.html#vinos">Vino Tinto ▸</a>
 								<ul class="submenu">
-									<li><a href="#baguettes-carnes">Baguettes Carnes Frias</a></li>
-									<li><a href="#baguettes-jamon">Baguettes Jamon Serrano</a></li>
-									<li><a href="#baguettes-vegetarianos">Baguettes Vegetarianos</a></li>
+									<li><a href="index.html#vino1">L.A. Cetto Cabernet Sauvignon 750 ml</a></li>
+									<li><a href="index.html#vino2">Vino Rosado Beringer white zinfandel 750 ml</a></li>
+									<li><a href="index.html#vino3">Vino Tinto Riunite Lambrusco 750 ml</a></li>
+									<li><a href="index.html#vino4">Vino Tinto Concha y Toro Reservado Cabernet Sauvignon Blend 750 ml</a></li>
+									<li><a href="index.html#vino5">Vino Tinto Viña Maipo Cabernet Sauvignon 750 ml</a></li>
+									<li><a href="index.html#vino6">Vino Tinto Castillo Bobal Shiraz 750 ml</a></li>
 								</ul>
 							</li>
-							<li><a href="#winebar">Wine Bar</a></li>
-						</ul>
-					</li>
-					<li class="dropdown">
-						<a href="#">Tienda Gourmet ▾</a>
-						<ul class="dropdown-menu">
-							<li><a href="#vinos">Vinos y Accesorios</a></li>
-							<li><a href="#cafeteras">Cafeteras y Prensas</a></li>
-							<li><a href="#yerba">Yerba Mate</a></li>
-							<li><a href="#tes">Tés y Teteras</a></li>
 						</ul>
 					</li>
 					<li><a href="nosotros.html">Nosotros</a></li>
@@ -514,6 +547,14 @@
 								<a href="https://www.google.com/maps/search/?api=1&query=21.475770,-104.869277" target="_blank" style="color: #8B4513; text-decoration: none;">Ver en Google Maps ↗</a>
 							</p>
 						</div>
+					</div>
+					
+					<div class="video-container">
+						<h3>Nuestras Tablas</h3>
+						<video controls autoplay muted loop>
+							<source src="videos/tabla1.mp4" type="video/mp4">
+							Tu navegador no soporta el elemento de video.
+						</video>
 					</div>
 				</div>
 			</div>

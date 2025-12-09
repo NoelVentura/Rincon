@@ -129,6 +129,51 @@
 
 		.dropdown-menu a {
 			display: block;
+			font-size: 0.9rem;
+		}
+
+		.dropdown-submenu {
+			position: relative;
+		}
+
+		.dropdown-submenu > a {
+			font-size: 0.85rem;
+		}
+
+		.submenu {
+			position: absolute;
+			left: 100%;
+			top: 0;
+			background: #2c2c2c;
+			list-style: none;
+			padding: 0.5rem 0;
+			min-width: 250px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+			opacity: 0;
+			visibility: hidden;
+			transform: translateX(-10px);
+			transition: all 0.3s;
+		}
+
+		.dropdown-submenu:hover .submenu {
+			opacity: 1;
+			visibility: visible;
+			transform: translateX(0);
+		}
+
+		.submenu li {
+			padding: 0.5rem 1rem;
+		}
+
+		.submenu a {
+			display: block;
+			color: #e0e0e0;
+			font-size: 0.85rem;
+		}
+
+		.submenu a:hover {
+			color: #fff;
+			background: rgba(255, 255, 255, 0.1);
 		}
 
 		.hamburger {
@@ -147,13 +192,52 @@
 
 		main {
 			min-height: calc(100vh - 200px);
-			background: url('images/tablapequeña.jpg') center center/cover no-repeat;
+			background: url('images/tablapequeña.jpg') center center/cover no-repeat fixed;
+			background-attachment: fixed;
 			padding: 3rem 2rem;
 		}
 
 		.container {
 			max-width: 1200px;
 			margin: 0 auto;
+			position: relative;
+		}
+
+		.main-content {
+			max-width: 100%;
+			padding-right: 420px;
+		}
+
+		.video-sidebar {
+			position: fixed;
+			right: 2rem;
+			top: 120px;
+			width: 400px;
+			z-index: 100;
+		}
+
+		.video-container {
+			background: rgba(255, 255, 255, 0.05);
+			padding: 2rem;
+			border-radius: 15px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+			backdrop-filter: blur(10px);
+			position: relative;
+		}
+
+		.video-container h3 {
+			font-size: 1.5rem;
+			color: #8B4513;
+			margin-bottom: 1.5rem;
+			text-align: center;
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.3);
+		}
+
+		.video-container video {
+			width: 100%;
+			height: auto;
+			border-radius: 10px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 		}
 
 		.page-title {
@@ -377,6 +461,22 @@
 				font-size: 2rem;
 			}
 
+			.container {
+				grid-template-columns: 1fr;
+			}
+
+			.main-content {
+				padding-right: 2rem;
+			}
+
+			.video-sidebar {
+				position: static;
+				width: 100%;
+				margin-top: 2rem;
+				right: auto;
+				top: auto;
+			}
+
 			.ingredients-list {
 				grid-template-columns: 1fr;
 			}
@@ -418,6 +518,26 @@
 			.hamburger.active span:nth-child(3) {
 				transform: translateY(-8px) rotate(-45deg);
 			}
+
+			.dropdown-menu {
+				position: static;
+				opacity: 1;
+				visibility: visible;
+				transform: none;
+				box-shadow: none;
+				padding-left: 1rem;
+			}
+
+			.submenu {
+				position: static;
+				opacity: 1;
+				visibility: visible;
+				transform: none;
+				box-shadow: none;
+				padding-left: 1.5rem;
+				background: rgba(0, 0, 0, 0.1);
+				margin-top: 0.5rem;
+			}
 		}
 	</style>
 </head>
@@ -426,44 +546,34 @@
 		<nav class="navbar">
 			<div class="nav-container">
 				<div class="logo">
-					<a href="file:///C:/Users/Noel%20Pacheco/Desktop/Proyectos%20Cursor/Proyectos/El-Rincon-de-las-Tablas/charolas.html" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit;">
-						<img src="images/icono.png" alt="Logo" class="logo-icon">
-						<span>El Rincón del Antojo</span>
-						<img src="images/nahomi.png" alt="Nahomi" class="nahomi-image">
-					</a>
+					<img src="images/icono.png" alt="Logo" class="logo-icon">
+					<span>El Rincón del Antojo</span>
+					<img src="images/nahomi.png" alt="Nahomi" class="nahomi-image">
 				</div>
 				<ul class="nav-menu">
-					<li><a href="file:///C:/Users/Noel%20Pacheco/Desktop/Proyectos%20Cursor/Proyectos/El-Rincon-de-las-Tablas/charolas.html">Inicio</a></li>
+					<li><a href="charolas.html">Inicio</a></li>
 					<li class="dropdown">
 						<a href="#">Menú ▾</a>
 						<ul class="dropdown-menu">
 							<li class="dropdown-submenu">
-								<a href="charolas.html#charolas">Charolas Gourmet ▸</a>
+								<a href="index.html#charolas">Del Antojo al Gourmet ▸</a>
 								<ul class="submenu">
-									<li><a href="charolas.html#charolas">Mixtas de Carnes y Quesos</a></li>
-									<li><a href="charolas.html#quesos">Especial de Quesos</a></li>
-									<li><a href="charolas.html#carnes">Especial de Carnes y Embutidos</a></li>
+									<li><a href="index.html#charolas">Mixtas de Carnes y Quesos</a></li>
+									<li><a href="index.html#quesos">Especial de Quesos</a></li>
+									<li><a href="index.html#carnes">Especial de Carnes y Embutidos</a></li>
 								</ul>
 							</li>
-							<li><a href="#tapas">Tapas Españolas</a></li>
 							<li class="dropdown-submenu">
-								<a href="#baguettes">Baguettes Gourmet ▸</a>
+								<a href="index.html#vinos">Vino Tinto ▸</a>
 								<ul class="submenu">
-									<li><a href="#baguettes-carnes">Baguettes Carnes Frias</a></li>
-									<li><a href="#baguettes-jamon">Baguettes Jamon Serrano</a></li>
-									<li><a href="#baguettes-vegetarianos">Baguettes Vegetarianos</a></li>
+									<li><a href="index.html#vino1">L.A. Cetto Cabernet Sauvignon 750 ml</a></li>
+									<li><a href="index.html#vino2">Vino Rosado Beringer white zinfandel 750 ml</a></li>
+									<li><a href="index.html#vino3">Vino Tinto Riunite Lambrusco 750 ml</a></li>
+									<li><a href="index.html#vino4">Vino Tinto Concha y Toro Reservado Cabernet Sauvignon Blend 750 ml</a></li>
+									<li><a href="index.html#vino5">Vino Tinto Viña Maipo Cabernet Sauvignon 750 ml</a></li>
+									<li><a href="index.html#vino6">Vino Tinto Castillo Bobal Shiraz 750 ml</a></li>
 								</ul>
 							</li>
-							<li><a href="#winebar">Wine Bar</a></li>
-						</ul>
-					</li>
-					<li class="dropdown">
-						<a href="#">Tienda Gourmet ▾</a>
-						<ul class="dropdown-menu">
-							<li><a href="#vinos">Vinos y Accesorios</a></li>
-							<li><a href="#cafeteras">Cafeteras y Prensas</a></li>
-							<li><a href="#yerba">Yerba Mate</a></li>
-							<li><a href="#tes">Tés y Teteras</a></li>
 						</ul>
 					</li>
 					<li><a href="nosotros.html">Nosotros</a></li>
@@ -480,10 +590,11 @@
 
 	<main>
 		<div class="container">
-			<h1 class="page-title">Arma tu Antojo</h1>
-			<p class="page-subtitle">Selecciona los ingredientes que deseas incluir en tu tabla personalizada</p>
+			<div class="main-content">
+				<h1 class="page-title">Arma tu Antojo</h1>
+				<p class="page-subtitle">Selecciona los ingredientes que deseas incluir en tu tabla personalizada</p>
 
-			<div class="ingredients-section">
+				<div class="ingredients-section">
 				<h2 class="section-title">Ingredientes Disponibles</h2>
 				<div class="ingredients-list">
 					<div class="ingredient-item">
@@ -570,7 +681,18 @@
 				</div>
 			</div>
 
-			<button class="submit-button" onclick="procesarPedido()">Confirmar Pedido</button>
+				<button class="submit-button" onclick="procesarPedido()">Confirmar Pedido</button>
+			</div>
+			
+			<div class="video-sidebar">
+				<div class="video-container">
+					<h3>Nuestras Tablas</h3>
+					<video controls autoplay muted loop playsinline>
+						<source src="videos/tabla2.mp4" type="video/mp4">
+						Tu navegador no soporta el elemento de video.
+					</video>
+				</div>
+			</div>
 		</div>
 	</main>
 
@@ -593,7 +715,7 @@
 			</div>
 		</div>
 		<div class="footer-bottom">
-			<p><a href="file:///C:/Users/Noel%20Pacheco/Desktop/Proyectos%20Cursor/Proyectos/El-Rincon-de-las-Tablas/charolas.html" style="color: #fff; text-decoration: none; margin-right: 1rem;">Inicio</a>&copy; 2025 El Rincón del Antojo. Todos los derechos reservados.</p>
+			<p><a href="charolas.html" style="color: #fff; text-decoration: none; margin-right: 1rem;">Inicio</a>&copy; 2025 El Rincón del Antojo. Todos los derechos reservados.</p>
 		</div>
 	</footer>
 
